@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.obiscr.chatgpt.settings.EasyCodeState">
+    <option name="projectFiles" value="$PROJECT_DIR$/app/src/androidTest/java/com/mau/healtyapp/ExampleInstrumentedTest.kt;C:/Users/msand/Desktop/progra/sexto_semestre/healty/app/src/main/java/com/mau/healtyapp/MainActivity.kt;C:/Users/msand/Desktop/progra/sexto_semestre/healty/app/src/main/java/com/mau/healtyapp/Registro.kt;C:/Users/msand/Desktop/progra/sexto_semestre/healty/app/src/main/java/com/mau/healtyapp/reloj.kt;C:/Users/msand/Desktop/progra/sexto_semestre/healty/app/src/test/java/com/mau/healtyapp/ExampleUnitTest.kt;C:/Users/msand/Desktop/progra/sexto_semestre/healty/app/build.gradle.kts;C:/Users/msand/Desktop/progra/sexto_semestre/healty/build.gradle.kts;C:/Users/msand/Desktop/progra/sexto_semestre/healty/settings.gradle.kts" />
+  </component>
+</project>
