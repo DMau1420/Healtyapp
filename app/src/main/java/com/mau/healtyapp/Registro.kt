@@ -22,6 +22,7 @@ class Registro : AppCompatActivity() {
     private lateinit var email: EditText
     private lateinit var password: EditText
     private lateinit var confpass: EditText
+    private lateinit var usname: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,18 +56,20 @@ class Registro : AppCompatActivity() {
         email = findViewById(R.id.Email)
         password = findViewById(R.id.Password)
         confpass = findViewById(R.id.confPassword)
+        usname  = findViewById(R.id.username)
 
         registrar = findViewById(R.id.Entrar)
         registrar.setOnClickListener {
-            val a = email.text.toString().trim()
-            val b = password.text.toString().trim()
-            val c = confpass.text.toString().trim()
-            val d = tipousuario.selectedItem.toString().trim()
+            val e = email.text.toString().trim()
+            val n = usname.text.toString().trim()
+            val p = password.text.toString().trim()
+            val cp = confpass.text.toString().trim()
+            val t = tipousuario.selectedItem.toString().trim()
 
-            if (validateInputs(a,b,c,d)) {
+            if (validateInputs(e,n,p,cp,t)) {
                 val u = generarUID6()
 
-                registrarUser(a, b, u, d)
+                registrarUser(e, n, p, u, t)//agregar nombre de usuario
                 Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
@@ -75,10 +78,15 @@ class Registro : AppCompatActivity() {
 
 
     }
-    private fun validateInputs(eemail: String, ppassword: String, confirmPassword: String, tipous: String): Boolean {
+    private fun validateInputs(eemail: String, name : String, ppassword: String, confirmPassword: String, tipous: String): Boolean {
         var isValid = true
         if (tipous == "<Seleccionar>"){
             Toast.makeText(this, "Seleccione un tipo de usuario", Toast.LENGTH_SHORT).show()
+            isValid = false
+        }
+
+        if (name.isEmpty()){
+            usname.error = "Ingrese su nombre"
             isValid = false
         }
 
@@ -115,29 +123,29 @@ class Registro : AppCompatActivity() {
             .joinToString("")
     }//creacion del UID (user id)
 
-    private fun registrarUser (correo: String, password: String, uid : String, tipo: String){
-    lifecycleScope.launch(Dispatchers.IO) {
-        try {
-            val url = URL("http://162.243.81.73/registro.php")
-            val params = "uid=$uid&correo=$correo&contra=$password&tipo=$tipo"
+    private fun registrarUser (correo: String, name: String, password: String, uid : String, tipo: String){
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val url = URL("http://162.243.81.73/registro.php")
+                val params = "uid=$uid&username=$name&correo=$correo&contra=$password&tipo=$tipo"
 
-            with(url.openConnection() as HttpURLConnection) {
-                requestMethod = "POST"
-                doOutput = true
-                outputStream.write(params.toByteArray())
+                with(url.openConnection() as HttpURLConnection) {
+                    requestMethod = "POST"
+                    doOutput = true
+                    outputStream.write(params.toByteArray())
 
-                val response = inputStream.bufferedReader().use { it.readText() }
+                    val response = inputStream.bufferedReader().use { it.readText() }
 
-                runOnUiThread {
-                    Toast.makeText(this@Registro, response, Toast.LENGTH_LONG).show()
+                    runOnUiThread {
+                        Toast.makeText(this@Registro, response, Toast.LENGTH_LONG).show()
+                    }
                 }
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            runOnUiThread {
-                Toast.makeText(this@Registro, "Error: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                runOnUiThread {
+                    Toast.makeText(this@Registro, "Error: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
-}
 }

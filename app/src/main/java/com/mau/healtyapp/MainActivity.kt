@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var verpass : ImageView
     private lateinit var entrar : Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         registrar.setOnClickListener {
             startActivity(Intent(this, Registro::class.java))
         }//fin del boton registrar
+
 
         verpass = findViewById(R.id.verpas)
         verpass.setOnClickListener {
@@ -54,12 +56,21 @@ class MainActivity : AppCompatActivity() {
             val password = password.text.toString().trim()
 
             if (validateInputs(email, password)) {
-                verificar(email, password) { success ->
-                    if (success) {
-                        val intent = Intent(this, reloj::class.java).apply {
-                            putExtra("email", email)
-                        }
+                verificar(email, password) { success, uid, tipo ->
+                    if (success && uid != null && tipo != null) {
+                        if (tipo == "paciente") {
+                            val intent = Intent(this, reloj::class.java).apply {
+                            putExtra("uid",uid)
+                            putExtra("tipo",tipo)
+                            }
                         startActivity(intent)
+                        }
+                        else {
+                            val intent = Intent(this, Admin_pacientes::class.java).apply {
+                                putExtra("uid",uid)
+                            }
+                            startActivity(intent)
+                        }
                     } else {
                         Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                     }
@@ -88,29 +99,35 @@ class MainActivity : AppCompatActivity() {
         return isValid
     }//fin del metodo validar inputs
 
-    private fun verificar(email: String, password: String, callback: (Boolean) -> Unit) {
+
+    private fun verificar(
+        email: String,
+        password: String,
+        callback: (Boolean, String?, String?) -> Unit  // (success, uid, tipo)
+    ) {
         lifecycleScope.launch(Dispatchers.IO) {
             try {
-                //cambiar url por la que se vaya  a ocupar y claramente hacer su php
                 val url = URL("http://162.243.81.73/login.php?correo=$email&contra=$password")
                 val connection = url.openConnection() as HttpURLConnection
                 connection.requestMethod = "GET"
 
                 val response = connection.inputStream.bufferedReader().use { it.readText() }
-
                 val jsonObject = JSONObject(response)
+
                 val correo = jsonObject.getString("correo")
                 val contrasena = jsonObject.getString("contra")
+                val uid = jsonObject.getString("uid")
+                val tipo = jsonObject.getString("tipo")
 
                 runOnUiThread {
-                    callback(email == correo && password == contrasena)
+                    callback(email == correo && password == contrasena, uid, tipo)
                 }
             }
             catch (e: Exception) {
                 Log.e("LoginError", "Error de conexión", e)
                 runOnUiThread {
                     Toast.makeText(this@MainActivity, "Error: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
-                    callback(false)
+                    callback(false, null, null)
                 }
             }
         }

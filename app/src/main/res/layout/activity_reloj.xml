@@ -12,10 +12,12 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="time"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck"
         tools:layout_editor_absoluteX="98dp"
         tools:layout_editor_absoluteY="59dp" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="409dp"
         android:layout_height="409dp"
         android:layout_marginStart="1dp"
@@ -34,5 +36,16 @@
 
         </FrameLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/uid_propia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
