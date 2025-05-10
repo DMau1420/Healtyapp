@@ -61,15 +61,16 @@ class MainActivity : AppCompatActivity() {
                         if (tipo == "paciente") {
                             val intent = Intent(this, reloj::class.java).apply {
                             putExtra("uid",uid)
-                            putExtra("tipo",tipo)
                             }
-                        startActivity(intent)
+                            startActivity(intent)
+                            finish()
                         }
                         else {
                             val intent = Intent(this, Admin_pacientes::class.java).apply {
                                 putExtra("uid",uid)
                             }
                             startActivity(intent)
+                            finish()
                         }
                     } else {
                         Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()

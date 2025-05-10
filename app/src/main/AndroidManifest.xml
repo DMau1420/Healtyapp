@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Healtyapp"
         tools:targetApi="31">
         <activity
+            android:name=".agregar"
+            android:exported="false" />
+        <activity
             android:name=".Admin_pacientes"
             android:exported="false" />
         <activity
