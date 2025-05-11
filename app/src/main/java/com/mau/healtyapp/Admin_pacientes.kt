@@ -118,6 +118,7 @@ class Admin_pacientes : AppCompatActivity() {
                 """.trimIndent()
 
                     val uidPaciente = paciente.getString("uid")
+                    val nombrepac = paciente.getString("username")
 
                     val tv = TextView(this)
                     tv.text = texto
@@ -129,6 +130,7 @@ class Admin_pacientes : AppCompatActivity() {
                     tv.setOnClickListener {
                         val intent = Intent(this, Registrar_med::class.java)
                         intent.putExtra("uid_paciente", uidPaciente)
+                        intent.putExtra("nombre_paciente",nombrepac)
                         startActivity(intent)
                     }
 

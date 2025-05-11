@@ -8,16 +8,74 @@
     tools:context=".Registrar_med">
 
     <TextView
-        android:id="@+id/uid"
+        android:id="@+id/nombre_pac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="153dp"
-        android:layout_marginTop="156dp"
-        android:layout_marginEnd="200dp"
-        android:layout_marginBottom="556dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Nombre del paciente"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp" />
+
+    <EditText
+        android:id="@+id/nombre_med"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Nombre del medicamento"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre_pac"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/hora_inic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Hora de inicio (HH:MM)"
+        android:focusable="false"
+        android:clickable="true"
+        android:inputType="none"
+        app:layout_constraintTop_toBottomOf="@id/nombre_med"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"/>
+
+
+    <EditText
+        android:id="@+id/frecuencia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Frecuencia (horas)"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hora_inic" />
+
+    <EditText
+        android:id="@+id/dosis"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Dosis"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frecuencia"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/regmed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrar"
+        app:layout_constraintTop_toBottomOf="@id/dosis"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
