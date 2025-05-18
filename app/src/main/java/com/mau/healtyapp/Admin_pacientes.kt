@@ -128,7 +128,7 @@ class Admin_pacientes : AppCompatActivity() {
 
                     // ✅ Hacer clic para ir a Formulario con el UID del paciente
                     tv.setOnClickListener {
-                        val intent = Intent(this, Registrar_med::class.java)
+                        val intent = Intent(this, Ver_Alarmas_paciente::class.java)
                         intent.putExtra("uid_paciente", uidPaciente)
                         intent.putExtra("nombre_paciente",nombrepac)
                         startActivity(intent)
