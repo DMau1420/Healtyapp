@@ -65,8 +65,15 @@ class MainActivity : AppCompatActivity() {
                             startActivity(intent)
                             finish()
                         }
-                        else {
+                        else if (tipo == "cuidador"){
                             val intent = Intent(this, Admin_pacientes::class.java).apply {
+                                putExtra("uid",uid)
+                            }
+                            startActivity(intent)
+                            finish()
+                        }
+                        else{
+                            val intent = Intent(this, Opts_independiente::class.java).apply {
                                 putExtra("uid",uid)
                             }
                             startActivity(intent)

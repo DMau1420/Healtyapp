@@ -80,7 +80,18 @@
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <!-- Botones -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchActiva"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Alarma activa"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etDosis" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

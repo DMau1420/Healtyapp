@@ -37,7 +37,9 @@ class Ver_Alarmas_paciente : AppCompatActivity() {
         val nombre: String,
         val hora: String,
         val frecuencia: String,
-        val dosis: String
+        val dosis: String,
+        val activa: Int
+
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,6 +83,7 @@ class Ver_Alarmas_paciente : AppCompatActivity() {
             val medicamento = medicamentos[index]
             val intent2 = Intent(this, modificar_med::class.java).apply {
                 putExtra("id_medicamento", medicamento.id)
+                putExtra("alarma_activa", medicamento.activa == 1)
                 putExtra("uid_paciente", uuid)
                 putExtra("nombre_med", medicamento.nombre)
                 putExtra("hora_inicio", medicamento.hora)
@@ -132,8 +135,9 @@ class Ver_Alarmas_paciente : AppCompatActivity() {
                                 val hora = medicamento.getString("hora_inicio")
                                 val frecuencia = medicamento.getString("frecuencia")
                                 val dosis = medicamento.getString("dosis")
+                                val activa = medicamento.getInt("estado")
 
-                                medicamentos.add(Medicamento(id, nombreMed, hora, frecuencia, dosis))
+                                medicamentos.add(Medicamento(id, nombreMed, hora, frecuencia, dosis,activa))
 
                                 when (i) {
                                     0 -> {
