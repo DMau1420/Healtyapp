@@ -23,12 +23,25 @@ import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runInterruptible
 import org.json.JSONObject
+import java.io.PrintWriter
+import java.net.Socket
 import java.util.Calendar
+
 
 
 @Suppress("DEPRECATION")
 class AlarmReceiver : BroadcastReceiver() {
+    private val serverIp = "192.168.1.110"
+    private val serverPort = 12345
+    private var socket: Socket? = null
+    private var writer: PrintWriter? = null
+
     private lateinit var cameraManager: CameraManager
     private var cameraId: String? = null
     private var handler: Handler? = null
@@ -39,6 +52,10 @@ class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val medicamento = intent.getStringExtra("medicamento") ?: "Medicamento"
         val id = intent.getIntExtra("alarma_id", 0)
+        val uidPaciente = intent.getStringExtra("uid_paciente") ?: ""
+
+        val modulo = intent.getStringExtra("modulo")
+        val dosis = intent.getStringExtra("dosis")
 
         val programarSiguiente = intent.getBooleanExtra("programar_siguiente", false)
 
@@ -48,6 +65,16 @@ class AlarmReceiver : BroadcastReceiver() {
                 return@verificarEstadoAlarma
             }
         }
+
+        // Lanzar Activity de confirmación
+        handleSocketCommunication(modulo.toString(),dosis.toString())
+        val confirmIntent = Intent(context, ConfirmacionActivity::class.java).apply {
+            putExtra("medicamento", medicamento)
+            putExtra("alarma_id", id)
+            putExtra("uid_paciente", uidPaciente)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        context.startActivity(confirmIntent)
 
         // Mostrar notificación y activar efectos
         mostrarAlarma(context, medicamento, id)
@@ -202,16 +229,21 @@ class AlarmReceiver : BroadcastReceiver() {
 
         val url = "http://162.243.81.73/ver_estado_alarma.php?id=$id"
 
-        val request = StringRequest(
+        val request = object : StringRequest(
             Request.Method.GET,
             url,
             { response ->
                 try {
                     val json = JSONObject(response)
-                    val estaActiva = json.getInt("estado") == 1
-                    callback(estaActiva)  // Pasamos el booleano al callback
+                    val estaActiva = if (json.has("estado")) {
+                        json.getInt("estado") == 1
+                    } else {
+                        Log.e("Alarma", "Respuesta inesperada: $response")
+                        false
+                    }
+                    callback(estaActiva)
                 } catch (e: Exception) {
-                    Log.e("estado", "Error parseando respuesta", e)
+                    Log.e("Alarma", "Error parseando respuesta", e)
                     callback(false)
                 }
             },
@@ -219,8 +251,39 @@ class AlarmReceiver : BroadcastReceiver() {
                 Log.e("Alarma", "Error verificando estado", error)
                 callback(false)
             }
-        )
+        ) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                return headers
+            }
+        }
 
         Volley.newRequestQueue(context).add(request)
     }
+
+    private fun handleSocketCommunication(modulo: String?, dosis: String?) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // Conectar
+                val socket = Socket(serverIp, serverPort)
+                val writer = PrintWriter(socket.getOutputStream(), true)
+
+                // Enviar mensaje
+                writer.println("${modulo},${dosis}")
+
+                // Esperar un momento para asegurar el envío
+                delay(100)
+
+                // Cerrar recursos
+                writer.close()
+                socket.close()
+
+                Log.d("Socket", "Mensaje enviado correctamente")
+            } catch (e: Exception) {
+                Log.e("Socket", "Error en comunicación por socket", e)
+            }
+        }
+    }
+
 }
