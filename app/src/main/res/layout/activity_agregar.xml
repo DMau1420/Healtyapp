@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cuidador_primary"
     tools:context=".agregar">
 
     <TextView
@@ -21,6 +22,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="UID del paciente"
+        android:fontFamily="@font/alegreya_sc"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/agregar"
@@ -31,11 +35,16 @@
 
     <Button
         android:id="@+id/agregar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="470dp"
-        android:text="agregar"
+        android:layout_width="149dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="236dp"
+        android:backgroundTint="@color/cuidador_secondary"
+        android:fontFamily="@font/alegreya_sc"
+        android:text="Agregar"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

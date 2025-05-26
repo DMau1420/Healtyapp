@@ -4,16 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/design_default_color_secondary"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/Titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/alegreya_sc"
+        android:textColor="@color/black"
         android:layout_marginTop="40dp"
         android:text="HealthyMeter"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,8 +25,10 @@
     <EditText
         android:id="@+id/Email"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/alegreya_sc"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:textColor="@color/black"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/Password"
@@ -36,6 +42,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
+        android:fontFamily="@font/alegreya_sc"
+        android:textColor="@color/black"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,12 +52,15 @@
 
     <Button
         android:id="@+id/Entrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#00C853"
+        android:layout_width="123dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="@color/cuidador_secondary"
+        android:fontFamily="@font/alegreya_sc"
         android:text="Entrar"
         android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Password" />
@@ -58,39 +69,24 @@
         android:id="@+id/Registrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/alegreya_sc"
         android:text="Registrarse"
-        app:layout_constraintBottom_toBottomOf="@+id/txtdiagonal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtdiagonal" />
-
-    <TextView
-        android:id="@+id/txtdiagonal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="/"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/Registrarse"
-        app:layout_constraintTop_toBottomOf="@+id/Entrar"
-        app:layout_constraintVertical_bias="0.25" />
-
-    <TextView
-        android:id="@+id/recurperar_contra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="¿Ha olvidado su contraseña?"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtdiagonal" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.769" />
 
     <TextView
         android:id="@+id/txtcorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
+        android:fontFamily="@font/alegreya_sc"
+        android:textColor="@color/black"
         android:layout_marginEnd="194dp"
         android:text="Correo electronico"
         app:layout_constraintBottom_toTopOf="@+id/Email"
@@ -103,8 +99,10 @@
     <TextView
         android:id="@+id/passwordtxt"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/alegreya_sc"
         android:layout_height="wrap_content"
         android:text="Contraseña"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/Password"
         app:layout_constraintStart_toEndOf="@+id/imgpassword" />
 

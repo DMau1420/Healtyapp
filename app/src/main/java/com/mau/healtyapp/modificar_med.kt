@@ -38,9 +38,9 @@ class modificar_med : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modificar_med)
 
-        var med = findViewById<TextView>(R.id.med_id)
 
-        med.text = intent.getStringExtra("id_medicamento")
+
+
         etNombreMed = findViewById(R.id.etNombreMed)
         etHora = findViewById(R.id.etHora)
         etFrecuencia = findViewById(R.id.etFrecuencia)

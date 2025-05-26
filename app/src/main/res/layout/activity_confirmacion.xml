@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/paciente_primary"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="24dp"
     tools:context=".ConfirmacionActivity">
 
@@ -12,33 +13,48 @@
         android:id="@+id/tvMedicamento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
         android:layout_marginBottom="32dp"
-        android:text="¿Tomaste tu medicamento?"/>
+        android:fontFamily="@font/alegreya_sc"
+        android:textStyle="bold"
+        android:text="¿Tomaste tu medicamento?"
+        android:textColor="@color/black"
+        android:textSize="29sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:layout_marginTop="16dp">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="121dp"
+            android:layout_height="59dp"
             android:backgroundTint="#F44336"
+            android:fontFamily="@font/alegreya_sc"
+            android:layout_marginStart="40dp"
             android:text="No"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
 
         <Button
             android:id="@+id/btnSi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_width="112dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="40dp"
             android:backgroundTint="#4CAF50"
+            android:fontFamily="@font/alegreya_sc"
             android:text="Sí"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
 
     </LinearLayout>
