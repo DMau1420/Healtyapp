@@ -66,8 +66,10 @@ class AlarmReceiver : BroadcastReceiver() {
             }
         }
 
-        // Lanzar Activity de confirmación
+       //mandar al healty
+
         handleSocketCommunication(modulo.toString(),dosis.toString())
+        // Lanzar Activity de confirmación
         val confirmIntent = Intent(context, ConfirmacionActivity::class.java).apply {
             putExtra("medicamento", medicamento)
             putExtra("alarma_id", id)
