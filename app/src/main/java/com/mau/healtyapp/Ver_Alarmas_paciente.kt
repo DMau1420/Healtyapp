@@ -30,6 +30,7 @@ class Ver_Alarmas_paciente : AppCompatActivity() {
     private lateinit var card2: CardView
     private lateinit var card3: CardView
     private var uuid: String? = null
+    private lateinit var btnEstadisticas: Button
     private val medicamentos = mutableListOf<Medicamento>()
 
     data class Medicamento(
@@ -37,7 +38,9 @@ class Ver_Alarmas_paciente : AppCompatActivity() {
         val nombre: String,
         val hora: String,
         val frecuencia: String,
-        val dosis: String
+        val dosis: String,
+        val activa: Int
+
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +59,7 @@ class Ver_Alarmas_paciente : AppCompatActivity() {
         card1 = med1Name.parent.parent as CardView
         card2 = med2Name.parent.parent as CardView
         card3 = med3Name.parent.parent as CardView
+        btnEstadisticas = findViewById(R.id.btnEstadisticas)
 
         // Obtener datos del intent
         uuid = intent.getStringExtra("uid_paciente")
@@ -66,6 +70,13 @@ class Ver_Alarmas_paciente : AppCompatActivity() {
         nuevoBtn.setOnClickListener {
             agregar()
         }
+        btnEstadisticas.setOnClickListener {
+            val intent = Intent(this, EstadisticasActivity::class.java).apply {
+                putExtra("uid_paciente", uuid)
+            }
+            startActivity(intent)
+        }
+
 
         // Configurar clicks en las CardViews
         card1.setOnClickListener { abrirModificar(0) }
@@ -81,6 +92,7 @@ class Ver_Alarmas_paciente : AppCompatActivity() {
             val medicamento = medicamentos[index]
             val intent2 = Intent(this, modificar_med::class.java).apply {
                 putExtra("id_medicamento", medicamento.id)
+                putExtra("alarma_activa", medicamento.activa == 1)
                 putExtra("uid_paciente", uuid)
                 putExtra("nombre_med", medicamento.nombre)
                 putExtra("hora_inicio", medicamento.hora)
@@ -132,8 +144,9 @@ class Ver_Alarmas_paciente : AppCompatActivity() {
                                 val hora = medicamento.getString("hora_inicio")
                                 val frecuencia = medicamento.getString("frecuencia")
                                 val dosis = medicamento.getString("dosis")
+                                val activa = medicamento.getInt("estado")
 
-                                medicamentos.add(Medicamento(id, nombreMed, hora, frecuencia, dosis))
+                                medicamentos.add(Medicamento(id, nombreMed, hora, frecuencia, dosis,activa))
 
                                 when (i) {
                                     0 -> {
