@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/paciente_primary"
     tools:context=".reloj"
     tools:ignore="ExtraText">
 
@@ -12,7 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:format12Hour="hh:mm:ss a"
-        android:textSize="24sp"
+        android:textSize="55sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="110dp"
         android:orientation="vertical"
@@ -36,15 +39,23 @@
 
         <TextView
             android:id="@+id/respuesta"
-            android:layout_width="match_parent"
+            android:layout_width="286dp"
             android:layout_height="wrap_content"
-            android:text="resultado" />
+            android:layout_gravity="center"
+            android:fontFamily="@font/alegreya_sc"
+            android:text="resultado"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/uid_propia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:fontFamily="@font/alegreya_sc"
         android:clickable="true"
         android:focusable="true"
         android:textIsSelectable="true"

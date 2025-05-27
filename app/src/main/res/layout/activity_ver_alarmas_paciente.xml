@@ -42,6 +42,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/alegreya_sc"
                         android:text="Paracetamol 500mg"
                         android:textSize="16sp"
@@ -59,6 +60,7 @@
                             android:layout_weight="1"
                             android:fontFamily="@font/alegreya_sc"
                             android:text="08:00 AM"
+                            android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -89,6 +91,7 @@
                         android:fontFamily="@font/alegreya_sc"
                         android:text="Ibuprofeno 400mg"
                         android:textSize="16sp"
+                        android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -103,6 +106,7 @@
                             android:layout_weight="1"
                             android:fontFamily="@font/alegreya_sc"
                             android:text="12:30 PM"
+                            android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -133,6 +137,7 @@
                         android:fontFamily="@font/alegreya_sc"
                         android:text="Amoxicilina 250mg"
                         android:textSize="16sp"
+                        android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -147,6 +152,7 @@
                             android:layout_weight="1"
                             android:fontFamily="@font/alegreya_sc"
                             android:text="07:15 PM"
+                            android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -186,9 +192,11 @@
 
     <TextView
         android:id="@+id/ver_nombre"
-        android:layout_width="44dp"
-        android:layout_height="20dp"
+        android:layout_width="109dp"
+        android:layout_height="38dp"
         android:layout_marginBottom="620dp"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"

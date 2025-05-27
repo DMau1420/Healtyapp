@@ -123,8 +123,9 @@ class Admin_pacientes : AppCompatActivity() {
                     val tv = TextView(this)
                     tv.text = texto
                     tv.setPadding(16, 16, 16, 16)
-                    tv.setBackgroundColor(Color.parseColor("#EEEEEE"))
+                    tv.setBackgroundColor(Color.parseColor("#E1F5FE"))
                     tv.setTextColor(Color.BLACK)
+                    tv.setTextSize(18F)
 
                     // ✅ Hacer clic para ir a Formulario con el UID del paciente
                     tv.setOnClickListener {

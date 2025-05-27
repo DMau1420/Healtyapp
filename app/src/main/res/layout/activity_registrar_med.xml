@@ -5,24 +5,31 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cuidador_primary"
     tools:context=".Registrar_med">
 
     <TextView
         android:id="@+id/nombre_pac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/alegreya_sc"
         android:text="Nombre del paciente"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nombre_med"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:layout_margin="16dp"
+        android:fontFamily="@font/alegreya_sc"
         android:hint="Nombre del medicamento"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,14 +41,17 @@
         android:id="@+id/hora_inic"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Hora de inicio (HH:MM)"
-        android:focusable="false"
+        android:layout_margin="16dp"
+        android:textColorHint="@color/black"
         android:clickable="true"
+        android:focusable="false"
+        android:fontFamily="@font/alegreya_sc"
+        android:textColor="@color/black"
+        android:hint="Hora de inicio (HH:MM)"
         android:inputType="none"
-        app:layout_constraintTop_toBottomOf="@id/nombre_med"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nombre_med" />
 
 
     <EditText
@@ -51,6 +61,9 @@
         android:layout_margin="16dp"
         android:hint="Frecuencia (horas)"
         android:inputType="number"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:fontFamily="@font/alegreya_sc"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,6 +78,9 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:fontFamily="@font/alegreya_sc"
         app:layout_constraintTop_toBottomOf="@id/frecuencia"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -72,10 +88,15 @@
         android:id="@+id/regmed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Registrar"
-        app:layout_constraintTop_toBottomOf="@id/dosis"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:fontFamily="@font/alegreya_sc"
+        android:backgroundTint="@color/cuidador_secondary"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dosis" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

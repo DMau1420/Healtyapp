@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cuidador_background"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -38,7 +39,9 @@
         android:gravity="center"
         android:paddingTop="8dp"
         android:text="Últimos 7 días"
-        android:textSize="12sp"
+        android:textSize="20sp"
+        android:fontFamily="@font/alegreya_sc"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

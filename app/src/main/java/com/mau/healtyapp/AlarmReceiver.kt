@@ -37,7 +37,7 @@ import java.util.Calendar
 
 @Suppress("DEPRECATION")
 class AlarmReceiver : BroadcastReceiver() {
-    private val serverIp = "192.168.1.110"
+    private val serverIp = "raspberrypi"
     private val serverPort = 12345
     private var socket: Socket? = null
     private var writer: PrintWriter? = null
@@ -67,7 +67,6 @@ class AlarmReceiver : BroadcastReceiver() {
         }
 
        //mandar al healty
-
         handleSocketCommunication(modulo.toString(),dosis.toString())
         // Lanzar Activity de confirmación
         val confirmIntent = Intent(context, ConfirmacionActivity::class.java).apply {

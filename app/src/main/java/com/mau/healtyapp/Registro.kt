@@ -32,7 +32,7 @@ class Registro : AppCompatActivity() {
         tipousuario = findViewById(R.id.spinnerTipoUsuario)
 
         val opciones = arrayOf("<Seleccionar>","Paciente", "Cuidador", "Independiente")
-        val adapter = object : ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones) {
+        val adapter = object : ArrayAdapter<String>(this, R.layout.spinner_item, opciones) {
             override fun isEnabled(position: Int): Boolean {
                 return position != 0 // Desactiva la opción "<Seleccionar>"
             }
@@ -49,7 +49,7 @@ class Registro : AppCompatActivity() {
             }
         }
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        adapter.setDropDownViewResource(R.layout.spinner_item)
         tipousuario.adapter = adapter
         //fin spinner
 

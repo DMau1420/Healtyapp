@@ -99,7 +99,7 @@ class reloj : AppCompatActivity() {
                                 val modulo = medicamento.getString("modulo")
 
 
-                                resultado.append("Medicamento: $nombre\nHora: $hora\nFrecuencia: $frecuencia\nDosis: $dosis\nEstado: $estado\n\n")
+                                resultado.append("Medicamento: $nombre\nHora: $hora\nFrecuencia: $frecuencia\nDosis: $dosis\n\n")
 
                                 // Programar la alarma
                                 programarAlarma(alarmIds[i], nombre, hora, frecuencia,modulo, dosis)
